@@ -6,7 +6,8 @@ import { DevEventItemDto } from "./dev-event.rss-item.dto";
 export class DevEventProvider extends Provider {
   protected _providerName: string;
   protected _providerUrl: string;
-
+  
+  private skipCategories = ["meetup", "masterclass", "hackathon"];
   private dateLocationRegex = /on (\w+ \d{1,2}, \d{4})(?:, (Online)| in ([\w\s,]+))\./;
 
   constructor() {
@@ -33,5 +34,9 @@ export class DevEventProvider extends Provider {
       category: this.getCategory(item.categories || []),
       // description: item.description, // Skip description as it is title + date + location + link
     };
+  }
+
+  public providerFilter(item: DevEventItemDto): boolean {
+    return !item.categories.some(i => this.skipCategories.includes(i.toLowerCase()));
   }
 }
