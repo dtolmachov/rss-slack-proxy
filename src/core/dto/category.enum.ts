@@ -1,10 +1,10 @@
-export enum Category {
+enum Category {
   // Directions
   Agile = "Agile",
   Architecture = "Architecture",
   Design = "Design",
   DevOps = "DevOps",
-  Embeded = "Embeded",
+  Embedded = "Embedded",
   Mobile = "Mobile",
   Testing = "Testing",
 
@@ -21,3 +21,5 @@ export enum Category {
   // Default
   Unknown = "Unknown",
 }
+
+export default Category;

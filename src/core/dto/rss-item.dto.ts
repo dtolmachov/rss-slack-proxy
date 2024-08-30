@@ -1,4 +1,4 @@
-export interface RssItemDto {
+interface RssItemDto {
   title: string;
   description: string;
   link: string;
@@ -6,3 +6,5 @@ export interface RssItemDto {
   enclosure: string;
   guid: string;
 }
+
+export default RssItemDto;

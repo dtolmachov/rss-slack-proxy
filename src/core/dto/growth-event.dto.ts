@@ -1,6 +1,6 @@
-import { Category } from "./category.enum";
+import Category from "./category.enum";
 
-export interface GrowthEventDto {
+interface GrowthEventDto {
   title: string;
   link: string;
   category: Category;
@@ -8,3 +8,5 @@ export interface GrowthEventDto {
   description?: string;
   location?: string;
 }
+
+export default GrowthEventDto;

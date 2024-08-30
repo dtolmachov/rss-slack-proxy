@@ -1,6 +1,8 @@
 import { Block } from "@slack/web-api";
 
-export interface SlackMessageDto {
+interface SlackMessageDto {
   text: string;
   blocks: Block[];
 }
+
+export default SlackMessageDto;

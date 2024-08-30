@@ -1,11 +1,11 @@
 import Parser from "rss-parser";
 
-import { Category } from "./dto/category.enum";
-import { GrowthEventDto } from "./dto/growth-event.dto";
-import { RssItemDto } from "./dto/rss-item.dto";
-import { CategoryKeywords } from "./dto/category-keywords";
+import Category from "./dto/category.enum";
+import GrowthEventDto from "./dto/growth-event.dto";
+import RssItemDto from "./dto/rss-item.dto";
+import CategoryKeywords from "./dto/category-keywords";
 
-export abstract class Provider {
+abstract class Provider {
   protected _providerName!: string;
   protected _providerUrl!: string;
   protected yesterdayStartDate: Date;
@@ -95,3 +95,5 @@ export abstract class Provider {
     return category;
   }
 }
+
+export default Provider;

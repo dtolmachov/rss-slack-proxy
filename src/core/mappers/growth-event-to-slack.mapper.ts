@@ -1,7 +1,9 @@
-import { GrowthEventDto } from "../dto/growth-event.dto";
-import { SlackMessageDto } from "../../communication/slack-message.dto";
+import GrowthEventDto from "../dto/growth-event.dto";
+import SlackMessageDto from "../../communication/slack-message.dto";
+import categoryIcons from "../dto/category-icons";
+import Category from "../dto/category.enum";
 
-export function growthEventToSlackMapper(growthEvent: GrowthEventDto): SlackMessageDto {
+function growthEventToSlackMapper(growthEvent: GrowthEventDto): SlackMessageDto {
   const blocks = [];
 
   const text = `:star2: *<${growthEvent.link}|${growthEvent.title}>* :star2:\n_${growthEvent.category}_ | ${growthEvent.date}`;
@@ -29,3 +31,5 @@ export function growthEventToSlackMapper(growthEvent: GrowthEventDto): SlackMess
 
   return { text, blocks };
 }
+
+export default growthEventToSlackMapper;

@@ -1,7 +1,9 @@
-import { RssItemDto } from "../../core/dto/rss-item.dto";
+import RssItemDto from "../../core/dto/rss-item.dto";
 
-export interface DevEventItemDto extends RssItemDto {
+interface DevEventItemDto extends RssItemDto {
   content?: string;
   contentSnippet?: string;
   categories: string[];
 }
+
+export default DevEventItemDto;

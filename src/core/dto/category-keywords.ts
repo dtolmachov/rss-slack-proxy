@@ -1,12 +1,12 @@
-import { Category } from "./category.enum";
+import Category from "./category.enum";
 
-export const CategoryKeywords: Record<Category, string[]> = {
+const CategoryKeywords: Record<Category, string[]> = {
   // Directions
   [Category.Agile]: ["agile", "agility", "scrum", "kanban", "lean", "agile manifesto", "product management", "product owner", "scrum master", "agile coach", "agile transformation", "project management"],
   [Category.Architecture]: ["architecture", "microservices", "monolith", "serverless", "event-driven", "event sourcing", "cqrs", "cto", "architect"],
   [Category.Design]: ["design", "ui", "ux", "user interface", "user experience", "figma", "sketch", "adobe xd"],
   [Category.DevOps]: ["devops", "docker", "kubernetes", "jenkins", "continuous integration", "continuous deployment", "cybersecurity / infosec", "sre"],
-  [Category.Embeded]: ["embeded", "arduino", "raspberry pi", "iot", "internet of things", "hardware"],
+  [Category.Embedded]: ["embedded", "arduino", "raspberry pi", "iot", "internet of things", "hardware"],
   [Category.Mobile]: ["mobile", "android", "ios", "swift", "kotlin", "react native", "flutter"],
   [Category.Testing]: ["testing", "unit testing", "integration testing", "automated testing", "test-driven development"],
 
@@ -23,3 +23,5 @@ export const CategoryKeywords: Record<Category, string[]> = {
   // Default
   [Category.Unknown]: []
 };
+
+export default CategoryKeywords;

@@ -1,7 +1,6 @@
-import { Provider } from "../../core/provider";
-import { Category } from "../../core/dto/category.enum";
-import { GrowthEventDto } from "../../core/dto/growth-event.dto";
-import { DevEventItemDto } from "./dev-event.rss-item.dto";
+import Provider from "../../core/provider";
+import GrowthEventDto from "../../core/dto/growth-event.dto";
+import DevEventItemDto from "./dev-event.rss-item.dto";
 
 export class DevEventProvider extends Provider {
   protected _providerName: string;
