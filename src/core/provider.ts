@@ -22,8 +22,8 @@ export abstract class Provider {
     this.todayStartDate.setHours(0, 0, 0, 0);
 
     // process?.env?.minPubDate - ISOString. E.g. 2024-08-30T13:28:12.634Z
-    this.minPubDate = process?.env?.minPubDate ? new Date(process.env.minPubDate) : this.yesterdayStartDate;
-    this.maxPubDate = process?.env?.maxPubDate ? new Date(process.env.maxPubDate) : this.todayStartDate;
+    this.minPubDate = process?.env?.MIN_PUB_DATE ? new Date(process.env.MIN_PUB_DATE) : this.yesterdayStartDate;
+    this.maxPubDate = process?.env?.MAX_PUB_DATE ? new Date(process.env.MAX_PUB_DATE) : this.todayStartDate;
   }
 
   public async fetch(): Promise<GrowthEventDto[]> {
@@ -47,7 +47,7 @@ export abstract class Provider {
     }
 
     const orderedEvents = events.sort((a, b) => (new Date(a.date) as any) - (new Date(b.date) as any));
-    console.log(`Fetched ${orderedEvents.length} events from ${this._providerName}`);
+    console.log(`Fetching ${this._providerName} RSS feed - ${orderedEvents.length} events`);
     
     return orderedEvents;
   }

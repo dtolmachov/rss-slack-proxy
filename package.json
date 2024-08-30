@@ -20,6 +20,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@slack/web-api": "^7.3.4",
     "dotenv": "^16.4.5",
     "rss-parser": "^3.13.0"
   }
