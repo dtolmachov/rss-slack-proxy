@@ -18,7 +18,8 @@ export class DevEventProvider extends Provider {
   public buildGrowthEvent(item: DevEventItemDto) : GrowthEventDto | null {
     // item.description is in the format "title is happening on date, location. More information: [link]"
     // E.g. Coding dojo du midi is happening on September 4, 2024, Online. More information: https://dev.events/...
-    const match = item.description.match(this.dateLocationRegex);
+    const description: string = item.description || item.content || item.contentSnippet || "";
+    const match = description.match(this.dateLocationRegex);
     if (!match || !match[1]) { return null; }
 
     let date = match[1];
@@ -29,12 +30,8 @@ export class DevEventProvider extends Provider {
       location,
       title: item.title,
       link: item.link,
-      category: this.getCategory(item),
+      category: this.getCategory(item.categories || []),
       // description: item.description, // Skip description as it is title + date + location + link
     };
-  }
-
-  public getCategory(item: DevEventItemDto) : Category {
-      throw new Error("getCategory method not implemented");
   }
 }

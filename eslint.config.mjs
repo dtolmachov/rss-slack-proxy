@@ -14,6 +14,6 @@ export default {
   },
   rules: {
     quotes: ["warn", "double"],
-    "@typescript-eslint/explicit-module-boundary-types": "warn"
+    "@typescript-eslint/explicit-module-boundary-types": "warn",
   },
 };
