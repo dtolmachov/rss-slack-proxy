@@ -6,7 +6,8 @@ import Category from "../dto/category.enum";
 function growthEventToSlackMapper(growthEvent: GrowthEventDto): SlackMessageDto {
   const blocks = [];
 
-  const text = `:star2: *<${growthEvent.link}|${growthEvent.title}>* :star2:\n_${growthEvent.category}_ | ${growthEvent.date}`;
+  const icon = categoryIcons[growthEvent.category as Category];
+  const text = `${icon} *<${growthEvent.link}|${growthEvent.title}>* ${icon}\n_${growthEvent.category}_ | ${growthEvent.date}`;
   const location = growthEvent.location ? `\n*Location:* ${growthEvent.location}` : "";
   const titleBlock = {
     "type": "section",
