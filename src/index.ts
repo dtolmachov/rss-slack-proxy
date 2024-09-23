@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { Handler, Context } from "aws-lambda";
 
 import Provider from "./core/provider";
 import * as providers from "./providers";
@@ -25,12 +26,10 @@ async function checkFeed(providerName: string): Promise<GrowthEventDto[]> {
   return await providerInstance.fetch();
 }
 
-async function main() {
-  const events = await checkFeed("dev-event");
-
-  for (const event of events) {
-    await postSlackMessage(growthEventToSlackMapper(event));
-  }
-}
-
-main();
+export const run: Handler = async (event: any, context: Context) => {
+    const events = await checkFeed("dev-event");
+  
+    for (const event of events) {
+      await postSlackMessage(growthEventToSlackMapper(event));
+    }
+};

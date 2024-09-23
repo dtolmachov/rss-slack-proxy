@@ -1,0 +1,19 @@
+service: rss-slack-proxy
+
+frameworkVersion: '2 || 3'
+
+provider:
+  name: aws
+  region: eu-central-1
+  runtime: nodejs20.x
+  lambdaHashingVersion: 20201221
+
+package:
+  artifact: dist/deployment-package.zip
+
+functions:
+  conference-radar:
+    handler: index.run
+    events:
+      - schedule: cron(0 9 * * ? *)
+  

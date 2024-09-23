@@ -7,11 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run lint && npm run compile",
     "lint": "eslint .",
-    "compile": "tsc"
+    "compile": "tsc",
+    "package": "cp .env dist/ && cp -r node_modules dist/ && cd dist && zip -r deployment-package.zip .",
+    "deploy": "npm run build && npm run package && serverless deploy --aws-profile your-profile-name"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
     "@types/node": "^22.5.1",
     "@types/xml2js": "^0.4.14",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
