@@ -39,7 +39,8 @@ abstract class Provider {
       const dateFilteredItems = providerFilteredEvents.filter(this.dateFilter.bind(this));
       const mappedEvents = dateFilteredItems.map(this.buildGrowthEvent.bind(this));
       const filteredEvents = mappedEvents.filter(event => event !== null);
-      const categorizedEvents = filteredEvents.filter(event => event.category !== Category.Unknown);
+      const locationFilteredEvents = filteredEvents.filter(this.locationFilter.bind(this));
+      const categorizedEvents = locationFilteredEvents.filter(event => event.category !== Category.Unknown);
 
       events = events.concat(categorizedEvents);
     } catch (error) {
@@ -60,6 +61,13 @@ abstract class Provider {
     if (!item.pubDate) { return false; }
     const pubDate = new Date(item.pubDate);
     return pubDate >= this.minPubDate && pubDate <= this.maxPubDate;
+  }
+
+  public locationFilter(item: GrowthEventDto): boolean {
+    const location = item.location?.toLowerCase();
+    const ignoreLocations = process?.env?.IGNORE_LOCATIONS?.split(",") || [];
+
+    return !ignoreLocations.some(ignoreLocation => location?.includes(ignoreLocation.toLowerCase()));
   }
 
   public providerFilter(item: RssItemDto): boolean {
